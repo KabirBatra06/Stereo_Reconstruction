@@ -254,16 +254,16 @@ Finally, we plot all these points on a 3D axis to visually inspect all the point
 The loop and Zhang Algorithm is used to rectify and find correspondences between stereo images. The algorithm essentially decomposes the rectification homographies H and H ' using the formulas below:
 
 $$
-H = H_{sh} \, H_{sim} \, H_{p}
+H = H_{sh}H_{sim}H_{p}
 $$
 
 $$
-H ' = H_{sh} ' \, H_{sim} ' \, H_{p} '
+H' = H_{sh}'H_{sim}'H_{p}'
 $$
 
-H_sh  and H_sh ' are shearing homographies.  
-H_sim and H_sim ' are similarity homographies  
-H_p and H_p ' are purely projective homographies  
+H_sh  and H_sh' are shearing homographies.  
+H_sim and H_sim' are similarity homographies  
+H_p and H_p' are purely projective homographies  
 
 The projective homographies send the epipoles of the image to infinity. The similarity homographies translate, rotate and scale the images. Finally, the shearing homographies are used to eliminate all the non-linear distortions.
 
@@ -302,3 +302,49 @@ We convert this 3D point into the world coordinate frame using the extrinsic par
 Once we have the point in the world coordinate frame, we estimate the point in the second cameras frame using the extrinsic camera matrix for the second camera. This gives us the estimate of the depth at that point in the second camera’s frame.
 
 Finally, we project this point onto the second image and obtain its pixel location in the second image. We check the depth value from our second depth map and if the difference between our estimate and the value in the depth map is less than our threshold we considered the points as matches.
+
+# Results
+
+## Original Stereo Images
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/img6.jpg" width="350" title="img1">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/img7.jpg" width="350" title="img1">
+</p>
+  
+## Rectified Images with Interest Points
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/output.jpg" width="350" title="img1">
+</p>
+
+## 3D Reconstruction from Images
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/3d_2.png" width="350" title="img1">
+</p>
+
+## Disparity Maps For 10x10 and 20x20 Windows
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/out_disparity1.jpg" width="350" title="img1">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/out_disp2.jpg" width="350" title="img1">
+</p>
+
+## Depth Mapped Images
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/image_and_depth_pair_8.png" title="img1">
+</p>
+<p align=center>
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/image_and_depth_pair_9.png" title="img1">
+</p>
+
+## Correspondences using Depth Mapped Images
+
+<p align="center">
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/depth_check_pair_8.png"  title="img1">
+</p>
+<p align=center>
+  <img src="https://github.com/KabirBatra06/Stereo_Reconstruction/blob/main/depth_check_pair_9.png" title="img1">
+</p>
